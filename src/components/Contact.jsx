@@ -46,6 +46,12 @@ const Contact = () => {
     )}`;
     window.location.href = mailtoUrl;
     setSubmitted(true);
+    setFormData({
+      name: '',
+      email: '',
+      subject: 'Software Engineer Role',
+      message: ''
+    });
     setTimeout(() => setSubmitted(false), 5000);
   };
 
