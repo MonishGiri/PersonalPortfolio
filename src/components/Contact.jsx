@@ -196,206 +196,206 @@ const Contact = () => {
             </div>
 
             {/* Social Links Bar */}
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.5rem',
-                  padding: '0.85rem',
-                  borderRadius: '10px',
-                  background: 'var(--card-bg)',
-                  border: '1px solid var(--card-border)',
-                  color: 'var(--text-color)',
-                  fontWeight: 600,
-                  fontSize: '0.9rem',
-                }}
-                onMouseOver={(e) => (e.currentTarget.style.borderColor = 'var(--accent-color)')}
-                onMouseOut={(e) => (e.currentTarget.style.borderColor = 'var(--card-border)')}
-              >
-                <FaGithub size={18} /> GitHub Profile
-              </a>
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.5rem',
-                  padding: '0.85rem',
-                  borderRadius: '10px',
-                  background: 'var(--card-bg)',
-                  border: '1px solid var(--card-border)',
-                  color: 'var(--text-color)',
-                  fontWeight: 600,
-                  fontSize: '0.9rem',
-                }}
-                onMouseOver={(e) => (e.currentTarget.style.borderColor = '#0077b5')}
-                onMouseOut={(e) => (e.currentTarget.style.borderColor = 'var(--card-border)')}
-              >
-                <FaLinkedin size={18} color="#0077b5" /> LinkedIn Connect
-              </a>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    flex: '1 1 140px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    padding: '0.85rem',
+                    borderRadius: '10px',
+                    background: 'var(--card-bg)',
+                    border: '1px solid var(--card-border)',
+                    color: 'var(--text-color)',
+                    fontWeight: 600,
+                    fontSize: '0.88rem',
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.borderColor = 'var(--accent-color)')}
+                  onMouseOut={(e) => (e.currentTarget.style.borderColor = 'var(--card-border)')}
+                >
+                  <FaGithub size={18} /> GitHub Profile
+                </a>
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    flex: '1 1 140px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    padding: '0.85rem',
+                    borderRadius: '10px',
+                    background: 'var(--card-bg)',
+                    border: '1px solid var(--card-border)',
+                    color: 'var(--text-color)',
+                    fontWeight: 600,
+                    fontSize: '0.88rem',
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.borderColor = '#0077b5')}
+                  onMouseOut={(e) => (e.currentTarget.style.borderColor = 'var(--card-border)')}
+                >
+                  <FaLinkedin size={18} color="#0077b5" /> LinkedIn Connect
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Direct Messaging Form */}
+            <div className="card">
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--text-color)' }}>
+                Send a Direct Message
+              </h3>
+
+              {submitted && (
+                <div
+                  style={{
+                    padding: '0.75rem 1rem',
+                    marginBottom: '1rem',
+                    borderRadius: '8px',
+                    background: 'rgba(16, 185, 129, 0.15)',
+                    border: '1px solid var(--accent-emerald)',
+                    color: 'var(--accent-emerald)',
+                    fontSize: '0.88rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                  }}
+                >
+                  <FaCheck /> Email client opened with your message. Talk soon!
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
+                    Your Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Sarah Jenkins"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '0.8rem 1rem',
+                      borderRadius: '8px',
+                      background: 'rgba(0, 0, 0, 0.2)',
+                      border: '1px solid var(--card-border)',
+                      color: 'var(--text-color)',
+                      fontSize: '0.9rem',
+                      outline: 'none',
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
+                    Your Email *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="e.g. sarah@company.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '0.8rem 1rem',
+                      borderRadius: '8px',
+                      background: 'rgba(0, 0, 0, 0.2)',
+                      border: '1px solid var(--card-border)',
+                      color: 'var(--text-color)',
+                      fontSize: '0.9rem',
+                      outline: 'none',
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
+                    Topic / Purpose
+                  </label>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                    {subjects.map((sub) => {
+                      const isSelected = formData.subject === sub;
+                      return (
+                        <button
+                          type="button"
+                          key={sub}
+                          onClick={() => setFormData({ ...formData, subject: sub })}
+                          style={{
+                            padding: '0.35rem 0.75rem',
+                            borderRadius: '6px',
+                            fontSize: '0.78rem',
+                            background: isSelected ? 'var(--accent-color)' : 'rgba(255, 255, 255, 0.05)',
+                            color: isSelected ? '#fff' : 'var(--text-secondary)',
+                            border: isSelected ? '1px solid var(--accent-color)' : '1px solid var(--card-border)',
+                          }}
+                        >
+                          {sub}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
+                    Message *
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    placeholder="Share details about the role, project, or schedule a quick technical interview..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '0.8rem 1rem',
+                      borderRadius: '8px',
+                      background: 'rgba(0, 0, 0, 0.2)',
+                      border: '1px solid var(--card-border)',
+                      color: 'var(--text-color)',
+                      fontSize: '0.9rem',
+                      outline: 'none',
+                      resize: 'vertical',
+                      fontFamily: 'inherit',
+                    }}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    padding: '0.9rem 1.5rem',
+                    borderRadius: '10px',
+                    background: 'var(--accent-color)',
+                    color: '#fff',
+                    fontWeight: 700,
+                    fontSize: '0.95rem',
+                    boxShadow: '0 4px 15px rgba(99, 102, 241, 0.35)',
+                    transition: 'all 0.25s ease',
+                    marginTop: '0.5rem',
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.background = 'var(--accent-hover)')}
+                  onMouseOut={(e) => (e.currentTarget.style.background = 'var(--accent-color)')}
+                >
+                  <FaPaperPlane /> Send Message
+                </button>
+              </form>
             </div>
           </div>
-
-          {/* Right Column: Direct Messaging Form */}
-          <div className="card">
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.25rem', color: 'var(--text-color)' }}>
-              Send a Direct Message
-            </h3>
-
-            {submitted && (
-              <div
-                style={{
-                  padding: '0.75rem 1rem',
-                  marginBottom: '1rem',
-                  borderRadius: '8px',
-                  background: 'rgba(16, 185, 129, 0.15)',
-                  border: '1px solid var(--accent-emerald)',
-                  color: 'var(--accent-emerald)',
-                  fontSize: '0.88rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
-                <FaCheck /> Email client opened with your message. Talk soon!
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Sarah Jenkins"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.8rem 1rem',
-                    borderRadius: '8px',
-                    background: 'rgba(0, 0, 0, 0.2)',
-                    border: '1px solid var(--card-border)',
-                    color: 'var(--text-color)',
-                    fontSize: '0.9rem',
-                    outline: 'none',
-                  }}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
-                  Your Email *
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="e.g. sarah@company.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.8rem 1rem',
-                    borderRadius: '8px',
-                    background: 'rgba(0, 0, 0, 0.2)',
-                    border: '1px solid var(--card-border)',
-                    color: 'var(--text-color)',
-                    fontSize: '0.9rem',
-                    outline: 'none',
-                  }}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
-                  Topic / Purpose
-                </label>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                  {subjects.map((sub) => {
-                    const isSelected = formData.subject === sub;
-                    return (
-                      <button
-                        type="button"
-                        key={sub}
-                        onClick={() => setFormData({ ...formData, subject: sub })}
-                        style={{
-                          padding: '0.35rem 0.75rem',
-                          borderRadius: '6px',
-                          fontSize: '0.78rem',
-                          background: isSelected ? 'var(--accent-color)' : 'rgba(255, 255, 255, 0.05)',
-                          color: isSelected ? '#fff' : 'var(--text-secondary)',
-                          border: isSelected ? '1px solid var(--accent-color)' : '1px solid var(--card-border)',
-                        }}
-                      >
-                        {sub}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div>
-                <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
-                  Message *
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  placeholder="Share details about the role, project, or schedule a quick technical interview..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '0.8rem 1rem',
-                    borderRadius: '8px',
-                    background: 'rgba(0, 0, 0, 0.2)',
-                    border: '1px solid var(--card-border)',
-                    color: 'var(--text-color)',
-                    fontSize: '0.9rem',
-                    outline: 'none',
-                    resize: 'vertical',
-                    fontFamily: 'inherit',
-                  }}
-                />
-              </div>
-
-              <button
-                type="submit"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.5rem',
-                  padding: '0.9rem 1.5rem',
-                  borderRadius: '10px',
-                  background: 'var(--accent-color)',
-                  color: '#fff',
-                  fontWeight: 700,
-                  fontSize: '0.95rem',
-                  boxShadow: '0 4px 15px rgba(99, 102, 241, 0.35)',
-                  transition: 'all 0.25s ease',
-                  marginTop: '0.5rem',
-                }}
-                onMouseOver={(e) => (e.currentTarget.style.background = 'var(--accent-hover)')}
-                onMouseOut={(e) => (e.currentTarget.style.background = 'var(--accent-color)')}
-              >
-                <FaPaperPlane /> Send Message
-              </button>
-            </form>
-          </div>
-        </div>
       </motion.div>
     </section>
   );

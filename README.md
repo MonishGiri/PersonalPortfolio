@@ -14,11 +14,8 @@ A modern, highly interactive, and responsive developer portfolio engineered for 
 ## 🚀 Key Features
 
 * **Interactive Developer Console / Terminal:**
-  * Type commands (`skills`, `projects`, `experience`, `education`, `api`, `contact`, `resume`, `next`) or click quick-command chips.
+  * Type commands (`skills`, `projects`, `experience`, `education`, `contact`, `resume`, `next`) or click quick-command chips.
   * Auto-navigation: Executing any command or typing `next` prints the output and automatically glides the viewport smoothly to the targeted section.
-* **REST API Interactive Playground:**
-  * Test simulated production microservices and AI pipelines (`POST /api/v1/gemini/mock-interview/generate`, `GET /api/v1/lms/excel-pixel/video-annotations`, `POST /api/v1/reports/export-pdf`).
-  * Inspect realistic status codes (`200 OK`), latency benchmarks (`34ms`), headers, and syntax-highlighted JSON responses.
 * **Live Interactive Code Preview:**
   * Interactive `developer.ts` and `specs.json` tabs directly inside the Hero section.
   * Dynamic typing animation showcasing core engineering specializations.

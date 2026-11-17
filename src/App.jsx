@@ -27,7 +27,7 @@ function App() {
         <Experience />
         <Projects />
         <Education />
-        <ApiPlayground />
+        {/* <ApiPlayground /> */}
         <Terminal onOpenResume={() => setIsResumeOpen(true)} />
         <Contact />
       </main>

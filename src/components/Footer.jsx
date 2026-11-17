@@ -60,33 +60,33 @@ const Footer = ({ onOpenResume }) => {
             <Link to="education" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>
               Education
             </Link>
-            <Link to="api-playground" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>
-              API Demo
-            </Link>
-            <a
-              href="/Monish_Giri_Resume.pdf"
-              download="Monish_Giri_Resume.pdf"
-              style={{
-                color: 'var(--accent-color)',
-                fontSize: '0.9rem',
-                cursor: 'pointer',
-                fontWeight: 600,
-              }}
-            >
-              Download Resume
-            </a>
-            <button
-              onClick={onOpenResume}
-              style={{
-                background: 'transparent',
-                color: 'var(--text-secondary)',
-                fontFamily: 'inherit',
-                fontSize: '0.9rem',
-                cursor: 'pointer',
-              }}
-            >
-              View Resume
-            </button>
+              <Link to="terminal" smooth={true} duration={500} offset={-70} style={{ cursor: 'pointer' }}>
+                Terminal
+              </Link>
+              <a
+                href="/Monish_Giri_Resume.pdf"
+                download="Monish_Giri_Resume.pdf"
+                style={{
+                  color: 'var(--accent-color)',
+                  fontSize: '0.9rem',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                }}
+              >
+                Download Resume
+              </a>
+              <button
+                onClick={onOpenResume}
+                style={{
+                  background: 'transparent',
+                  color: 'var(--text-secondary)',
+                  fontFamily: 'inherit',
+                  fontSize: '0.9rem',
+                  cursor: 'pointer',
+                }}
+              >
+                View Resume
+              </button>
           </div>
 
           {/* Social Icons */}

@@ -405,96 +405,96 @@ const Hero = ({ onOpenResume }) => {
               {/* Code Body */}
               <div
                 style={{
-                  padding: '1.5rem',
-                  fontSize: '0.88rem',
-                  lineHeight: 1.7,
+                  padding: 'clamp(0.85rem, 3vw, 1.5rem)',
+                  fontSize: 'clamp(0.72rem, 2.2vw, 0.88rem)',
+                  lineHeight: 1.6,
                   overflowX: 'auto',
                 }}
               >
                 {activeTab === 'code' ? (
-                  <pre style={{ margin: 0, fontFamily: 'var(--font-mono)' }}>
-                    <span style={{ color: '#ec4899' }}>const</span> <span style={{ color: '#38bdf8' }}>developer</span>:{' '}
-                    <span style={{ color: '#f59e0b' }}>FullStackEngineer</span> = &#123;{'\n'}
-                    {'  '}name: <span style={{ color: '#a7f3d0' }}>'{personalInfo.name}'</span>,{'\n'}
-                    {'  '}currentRole: <span style={{ color: '#a7f3d0' }}>'Software Engineer @ Q2A Media'</span>,{'\n'}
-                    {'  '}coreStack: &#91;{'\n'}
-                    {'    '}<span style={{ color: '#67e8f9' }}>'Node.js'</span>, <span style={{ color: '#67e8f9' }}>'Express.js'</span>, <span style={{ color: '#67e8f9' }}>'React.js'</span>,{'\n'}
-                    {'    '}<span style={{ color: '#67e8f9' }}>'MongoDB'</span>, <span style={{ color: '#67e8f9' }}>'Java Spring Boot'</span>, <span style={{ color: '#67e8f9' }}>'REST APIs'</span>{'\n'}
-                    {'  '}&#93;,{'\n'}
-                    {'  '}featuredWork: &#91;{'\n'}
-                    {'    '}<span style={{ color: '#fde047' }}>'Excel Pixel (Dubai) LMS'</span>,{'\n'}
-                    {'    '}<span style={{ color: '#fde047' }}>'AI Mock-Interview Platform (Gemini API)'</span>{'\n'}
-                    {'  '}&#93;,{'\n'}
-                    {'  '}methodologies: &#91;<span style={{ color: '#a7f3d0' }}>'WCAG 2.1 AA'</span>, <span style={{ color: '#a7f3d0' }}>'Agile'</span>, <span style={{ color: '#a7f3d0' }}>'CI/CD'</span>&#93;,{'\n'}
-                    {'  '}availableForHire: <span style={{ color: '#4ade80' }}>true</span>,{'\n'}
-                    {'  '}buildSolution: (<span style={{ color: '#cbd5e1' }}>specs</span>) =&gt; &#123;{'\n'}
-                    {'    '}<span style={{ color: '#ec4899' }}>return</span> <span style={{ color: '#38bdf8' }}>shipAccessibleScalableSystems</span>(specs);{'\n'}
-                    {'  '}&#125;{'\n'}
-                    &#125;;
-                  </pre>
-                ) : (
-                  <pre style={{ margin: 0, fontFamily: 'var(--font-mono)' }}>
-                    &#123;{'\n'}
-                    {'  '}<span style={{ color: '#38bdf8' }}>"engineer"</span>: <span style={{ color: '#a7f3d0' }}>"{personalInfo.name}"</span>,{'\n'}
-                    {'  '}<span style={{ color: '#38bdf8' }}>"experience"</span>: <span style={{ color: '#a7f3d0' }}>"1+ Years"</span>,{'\n'}
-                    {'  '}<span style={{ color: '#38bdf8' }}>"apisDelivered"</span>: <span style={{ color: '#f59e0b' }}>20</span>,{'\n'}
-                    {'  '}<span style={{ color: '#38bdf8' }}>"stateBoilerplateReduction"</span>: <span style={{ color: '#4ade80' }}>"30%"</span>,{'\n'}
-                    {'  '}<span style={{ color: '#38bdf8' }}>"copilotScaffoldingSpeedup"</span>: <span style={{ color: '#4ade80' }}>"20%"</span>,{'\n'}
-                    {'  '}<span style={{ color: '#38bdf8' }}>"accessibilityCompliance"</span>: <span style={{ color: '#a7f3d0' }}>"WCAG 2.1 AA"</span>,{'\n'}
-                    {'  '}<span style={{ color: '#38bdf8' }}>"degree"</span>: <span style={{ color: '#a7f3d0' }}>"MCA (Dec 2024)"</span>{'\n'}
-                    &#125;
-                  </pre>
+                    <pre style={{ margin: 0, fontFamily: 'var(--font-mono)', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                      <span style={{ color: '#ec4899' }}>const</span> <span style={{ color: '#38bdf8' }}>developer</span>:{' '}
+                      <span style={{ color: '#f59e0b' }}>FullStackEngineer</span> = &#123;{'\n'}
+                      {'  '}name: <span style={{ color: '#a7f3d0' }}>'{personalInfo.name}'</span>,{'\n'}
+                      {'  '}currentRole: <span style={{ color: '#a7f3d0' }}>'Software Engineer @ Q2A Media'</span>,{'\n'}
+                      {'  '}coreStack: &#91;{'\n'}
+                      {'    '}<span style={{ color: '#67e8f9' }}>'Node.js'</span>, <span style={{ color: '#67e8f9' }}>'Express.js'</span>, <span style={{ color: '#67e8f9' }}>'React.js'</span>,{'\n'}
+                      {'    '}<span style={{ color: '#67e8f9' }}>'MongoDB'</span>, <span style={{ color: '#67e8f9' }}>'Java Spring Boot'</span>, <span style={{ color: '#67e8f9' }}>'REST APIs'</span>{'\n'}
+                      {'  '}&#93;,{'\n'}
+                      {'  '}featuredWork: &#91;{'\n'}
+                      {'    '}<span style={{ color: '#fde047' }}>'Excel Pixel (Dubai) LMS'</span>,{'\n'}
+                      {'    '}<span style={{ color: '#fde047' }}>'AI Mock-Interview Platform'</span>{'\n'}
+                      {'  '}&#93;,{'\n'}
+                      {'  '}methodologies: &#91;<span style={{ color: '#a7f3d0' }}>'WCAG 2.1 AA'</span>, <span style={{ color: '#a7f3d0' }}>'Agile'</span>, <span style={{ color: '#a7f3d0' }}>'CI/CD'</span>&#93;,{'\n'}
+                      {'  '}availableForHire: <span style={{ color: '#4ade80' }}>true</span>,{'\n'}
+                      {'  '}buildSolution: (<span style={{ color: '#cbd5e1' }}>specs</span>) =&gt; &#123;{'\n'}
+                      {'    '}<span style={{ color: '#ec4899' }}>return</span> <span style={{ color: '#38bdf8' }}>shipAccessibleScalableSystems</span>(specs);{'\n'}
+                      {'  '}&#125;{'\n'}
+                      &#125;;
+                    </pre>
+                    ) : (
+                      <pre style={{ margin: 0, fontFamily: 'var(--font-mono)', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                        &#123;{'\n'}
+                        {'  '}<span style={{ color: '#38bdf8' }}>"engineer"</span>: <span style={{ color: '#a7f3d0' }}>"{personalInfo.name}"</span>,{'\n'}
+                        {'  '}<span style={{ color: '#38bdf8' }}>"experience"</span>: <span style={{ color: '#a7f3d0' }}>"1+ Years"</span>,{'\n'}
+                        {'  '}<span style={{ color: '#38bdf8' }}>"apisDelivered"</span>: <span style={{ color: '#f59e0b' }}>20</span>,{'\n'}
+                        {'  '}<span style={{ color: '#38bdf8' }}>"stateBoilerplateReduction"</span>: <span style={{ color: '#4ade80' }}>"30%"</span>,{'\n'}
+                        {'  '}<span style={{ color: '#38bdf8' }}>"copilotScaffoldingSpeedup"</span>: <span style={{ color: '#4ade80' }}>"20%"</span>,{'\n'}
+                        {'  '}<span style={{ color: '#38bdf8' }}>"accessibilityCompliance"</span>: <span style={{ color: '#a7f3d0' }}>"WCAG 2.1 AA"</span>,{'\n'}
+                        {'  '}<span style={{ color: '#38bdf8' }}>"degree"</span>: <span style={{ color: '#a7f3d0' }}>"MCA (Dec 2024)"</span>{'\n'}
+                        &#125;
+                      </pre>
                 )}
-              </div>
-            </div>
+                    </div>
+                  </div>
           </motion.div>
-        </div>
+            </div>
 
-        {/* Stats Metrics Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          style={{
-            marginTop: '3.5rem',
-            padding: '1.25rem 1rem',
-            borderRadius: '16px',
-            background: 'var(--card-bg)',
-            border: '1px solid var(--card-border)',
-            backdropFilter: 'blur(12px)',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-            gap: '1rem',
-            textAlign: 'center',
-          }}
-        >
-          {personalInfo.stats.map((stat, i) => (
-            <div
-              key={i}
+            {/* Stats Metrics Strip */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               style={{
-                padding: '0.5rem',
-                borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.02)',
+                marginTop: '3.5rem',
+                padding: '1.25rem 1rem',
+                borderRadius: '16px',
+                background: 'var(--card-bg)',
+                border: '1px solid var(--card-border)',
+                backdropFilter: 'blur(12px)',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+                gap: '1rem',
+                textAlign: 'center',
               }}
             >
-              <div
-                style={{
-                  fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
-                  fontWeight: 900,
-                  fontFamily: 'var(--font-mono)',
-                  color: 'var(--accent-color)',
-                  marginBottom: '0.2rem',
-                }}
-              >
-                {stat.value}
-              </div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 500, lineHeight: 1.3 }}>
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
+              {personalInfo.stats.map((stat, i) => (
+                <div
+                  key={i}
+                  style={{
+                    padding: '0.5rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+                      fontWeight: 900,
+                      fontFamily: 'var(--font-mono)',
+                      color: 'var(--accent-color)',
+                      marginBottom: '0.2rem',
+                    }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 500, lineHeight: 1.3 }}>
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+        </div>
     </section>
   );
 };

@@ -22,7 +22,6 @@ const Navbar = ({ onOpenResume }) => {
     { name: 'Experience', to: 'experience' },
     { name: 'Projects', to: 'projects' },
     { name: 'Education', to: 'education' },
-    { name: 'API Demo', to: 'api-playground' },
     { name: 'Terminal', to: 'terminal' },
     { name: 'Contact', to: 'contact' },
   ];

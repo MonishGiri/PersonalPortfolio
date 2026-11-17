@@ -101,17 +101,7 @@ const About = ({ onOpenResume }) => {
               </div>
 
               {/* Offset glowing border accent */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  borderRadius: '20px',
-                  border: '2px solid var(--accent-color)',
-                  transform: 'translate(12px, 12px)',
-                  zIndex: 1,
-                  opacity: 0.6,
-                }}
-              />
+              <div className="profile-accent-border" />
             </div>
 
             {/* Quick Specs Pill Grid */}

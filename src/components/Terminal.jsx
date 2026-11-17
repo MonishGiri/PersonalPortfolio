@@ -21,10 +21,6 @@ const sectionMap = {
   education: 'education',
   degree: 'education',
   degrees: 'education',
-  api: 'api-playground',
-  rest: 'api-playground',
-  demo: 'api-playground',
-  playground: 'api-playground',
   terminal: 'terminal',
   shell: 'terminal',
   contact: 'contact',
@@ -40,7 +36,6 @@ const navigationFlow = [
   'experience',
   'projects',
   'education',
-  'api-playground',
   'contact'
 ];
 
@@ -51,9 +46,9 @@ const Terminal = ({ onOpenResume }) => {
     {
       type: 'system',
       text: [
-        'Welcome to Monish Giri\'s Developer Shell [v1.0.5 - Linux Ubuntu/Node.js]',
+        'Welcome to Monish Giri\'s Developer Shell [v1.0.6 - Linux Ubuntu/Node.js]',
         'Type any command or "next" and press ENTER to navigate across portfolio sections.',
-        'Quick commands: skills, projects, experience, education, api, contact, resume, next'
+        'Quick commands: skills, projects, experience, education, contact, resume, next'
       ]
     },
     {
@@ -66,7 +61,7 @@ const Terminal = ({ onOpenResume }) => {
     }
   ]);
   const [copied, setCopied] = useState(false);
-  const bottomRef = useRef(null);
+  const terminalBodyRef = useRef(null);
 
   const handleCommand = (cmdToRun) => {
     const rawCmd = (cmdToRun || inputVal).trim().toLowerCase();
@@ -157,7 +152,10 @@ const Terminal = ({ onOpenResume }) => {
   };
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Only scroll within the terminal box itself, never scroll the outer window on load!
+    if (terminalBodyRef.current && history.length > 2) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
+    }
   }, [history]);
 
   const quickCommands = [
@@ -166,7 +164,6 @@ const Terminal = ({ onOpenResume }) => {
     'experience',
     'projects',
     'education',
-    'api',
     'contact',
     'resume',
     'clear'
@@ -242,116 +239,125 @@ const Terminal = ({ onOpenResume }) => {
               <span className="code-dot yellow" />
               <span className="code-dot green" />
             </div>
-            <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <FaCode style={{ color: 'var(--accent-color)' }} /> monish@ubuntu-srv: ~/portfolio (interactive nav enabled)
-            </div>
-            <button
-              onClick={copyTerminalLog}
-              title="Copy terminal session"
-              style={{
-                background: 'transparent',
-                color: 'var(--text-muted)',
-                fontSize: '0.85rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.3rem',
-                cursor: 'pointer'
-              }}
-            >
-              {copied ? <FaCheck style={{ color: 'var(--accent-emerald)' }} /> : <FaCopy />}
-            </button>
-          </div>
-
-          {/* Terminal Body */}
-          <div
-            style={{
-              padding: '1.25rem 1.5rem',
-              maxHeight: '400px',
-              overflowY: 'auto',
-              fontSize: '0.88rem',
-              lineHeight: 1.6,
-              color: 'var(--code-text)',
-            }}
-          >
-            {history.map((item, idx) => (
-              <div key={idx} style={{ marginBottom: '1rem' }}>
-                {item.type === 'system' ? (
-                  item.text.map((t, tIdx) => (
-                    <div key={tIdx} style={{ color: 'var(--text-secondary)' }}>
-                      # {t}
-                    </div>
-                  ))
-                ) : (
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-cyan)' }}>
-                      <span style={{ color: 'var(--accent-emerald)' }}>➜</span>
-                      <span style={{ color: 'var(--accent-color)' }}>~/portfolio</span>
-                      <span style={{ color: '#fff' }}>$ {item.cmd}</span>
-                    </div>
-                    <div style={{ paddingLeft: '1.25rem', marginTop: '0.35rem', color: '#d1d5db' }}>
-                      {item.output.map((line, lIdx) => (
-                        <div
-                          key={lIdx}
-                          style={{
-                            whiteSpace: 'pre-wrap',
-                            color: line.includes('[Auto-Navigation]') ? 'var(--accent-cyan)' : 'inherit',
-                            fontWeight: line.includes('[Auto-Navigation]') ? 600 : 'normal'
-                          }}
-                        >
-                          {line}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.4rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <FaCode style={{ color: 'var(--accent-color)', flexShrink: 0 }} /> monish@ubuntu-srv: ~/portfolio
               </div>
-            ))}
-
-            {/* Input Line */}
-            <form onSubmit={handleSubmit} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
-              <span style={{ color: 'var(--accent-emerald)' }}>➜</span>
-              <span style={{ color: 'var(--accent-color)' }}>~/portfolio</span>
-              <span style={{ color: '#fff' }}>$</span>
-              <input
-                type="text"
-                value={inputVal}
-                onChange={(e) => setInputVal(e.target.value)}
-                placeholder="type 'skills', 'projects', 'next', 'resume' & hit Enter..."
-                style={{
-                  flex: 1,
-                  background: 'transparent',
-                  border: 'none',
-                  outline: 'none',
-                  color: '#fff',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.88rem',
-                }}
-                aria-label="Terminal command input"
-              />
               <button
-                type="submit"
-                title="Execute command"
+                onClick={copyTerminalLog}
+                title="Copy terminal session"
                 style={{
-                  background: 'rgba(99, 102, 241, 0.2)',
-                  border: '1px solid rgba(99, 102, 241, 0.3)',
-                  color: 'var(--accent-color)',
-                  borderRadius: '4px',
-                  padding: '0.2rem 0.6rem',
-                  fontSize: '0.75rem',
+                  background: 'transparent',
+                  color: 'var(--text-muted)',
+                  fontSize: '0.85rem',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.25rem'
+                  gap: '0.3rem',
+                cursor: 'pointer',
+                  flexShrink: 0
                 }}
               >
-                Enter ↵
+                {copied ? <FaCheck style={{ color: 'var(--accent-emerald)' }} /> : <FaCopy />}
               </button>
-            </form>
-            <div ref={bottomRef} />
-          </div>
+            </div>
+
+            {/* Terminal Body */}
+            <div
+              ref={terminalBodyRef}
+              style={{
+                padding: 'clamp(1rem, 3vw, 1.5rem)',
+                maxHeight: '400px',
+                overflowY: 'auto',
+                overflowX: 'hidden',
+                fontSize: 'clamp(0.8rem, 2.5vw, 0.88rem)',
+                lineHeight: 1.6,
+                color: 'var(--code-text)',
+                wordBreak: 'break-word',
+              }}
+            >
+              {history.map((item, idx) => (
+                  <div key={idx} style={{ marginBottom: '1rem', wordBreak: 'break-word' }}>
+                    {item.type === 'system' ? (
+                      item.text.map((t, tIdx) => (
+                        <div key={tIdx} style={{ color: 'var(--text-secondary)' }}>
+                          # {t}
+                        </div>
+                      ))
+                    ) : (
+                      <div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-cyan)', flexWrap: 'wrap' }}>
+                            <span style={{ color: 'var(--accent-emerald)' }}>➜</span>
+                            <span style={{ color: 'var(--accent-color)' }}>~/portfolio</span>
+                            <span style={{ color: '#fff' }}>$ {item.cmd}</span>
+                          </div>
+                            <div style={{ paddingLeft: 'clamp(0.5rem, 2vw, 1.25rem)', marginTop: '0.35rem', color: '#d1d5db', wordBreak: 'break-word' }}>
+                              {item.output.map((line, lIdx) => (
+                                <div
+                                  key={lIdx}
+                                  style={{
+                                    whiteSpace: 'pre-wrap',
+                                    wordBreak: 'break-word',
+                                    color: line.includes('[Auto-Navigation]') ? 'var(--accent-cyan)' : 'inherit',
+                                    fontWeight: line.includes('[Auto-Navigation]') ? 600 : 'normal'
+                                  }}
+                                >
+                                  {line}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                )}
+                        </div>
+            ))}
+
+                        {/* Input Line */}
+                          <form onSubmit={handleSubmit} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', flexShrink: 0 }}>
+                              <span style={{ color: 'var(--accent-emerald)' }}>➜</span>
+                              <span style={{ color: 'var(--accent-color)' }}>~/portfolio</span>
+                              <span style={{ color: '#fff' }}>$</span>
+                            </div>
+                            <input
+                              type="text"
+                              value={inputVal}
+                              onChange={(e) => setInputVal(e.target.value)}
+                              placeholder="type 'skills', 'projects', 'next' & hit Enter..."
+                              style={{
+                                flex: 1,
+                                minWidth: '120px',
+                                background: 'transparent',
+                                border: 'none',
+                                outline: 'none',
+                                color: '#fff',
+                                fontFamily: 'var(--font-mono)',
+                                fontSize: 'clamp(0.8rem, 2.5vw, 0.88rem)',
+                              }}
+                              aria-label="Terminal command input"
+                            />
+                            <button
+                              type="submit"
+                              title="Execute command"
+                              style={{
+                                background: 'rgba(99, 102, 241, 0.2)',
+                                border: '1px solid rgba(99, 102, 241, 0.3)',
+                                color: 'var(--accent-color)',
+                                borderRadius: '4px',
+                                padding: '0.25rem 0.65rem',
+                                fontSize: '0.75rem',
+                                display: 'flex',
+                                alignItems: 'center',
+                  gap: '0.25rem',
+                                cursor: 'pointer',
+                                flexShrink: 0
+                              }}
+                            >
+                              Enter ↵
+                            </button>
+                          </form>
+                      </div>
         </div>
-      </div>
+                </div>
     </section>
-  );
+            );
 };
 
-export default Terminal;
+            export default Terminal;
